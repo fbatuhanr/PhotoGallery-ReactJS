@@ -19,7 +19,7 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const firebaseApp = initializeApp(firebaseConfig);
-const appStorage = getStorage(firebaseApp);
-const appFirestore = getFirestore(firebaseApp);
+  const appStorage = getStorage(firebaseApp);
+  const appFirestore = getFirestore(firebaseApp);
 
 export { appStorage, appFirestore };
