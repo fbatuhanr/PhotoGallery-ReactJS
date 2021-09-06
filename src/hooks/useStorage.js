@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 
 import { appStorage, appFirestore } from "../firebase/config";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 
 const useStorage = (file) => {
 
@@ -10,9 +11,12 @@ const useStorage = (file) => {
     const [url, setUrl] = useState(null);
 
     useEffect(() => {
-                
-        const storageRef = ref(appStorage, file.name);
-        const uploadTask = uploadBytesResumable(storageRef, file, file.type);
+ 
+        // Firebase Storage
+        const storageRef = ref(appStorage, "images/"+file.name);
+            const uploadTask = uploadBytesResumable(storageRef, file, file.type);
+        // Firebase Firestore
+        const collectionRef = collection(appFirestore, "images");
 
         uploadTask.on('state_changed', (snapshot) => { 
                 // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
@@ -38,8 +42,17 @@ const useStorage = (file) => {
             }, () => {
                 // Upload completed successfully, now we can get the download URL
                 getDownloadURL(uploadTask.snapshot.ref)
-                .then((downloadURL) => {
-                    setUrl(downloadURL);
+                .then(async (downloadURL) => {
+                    try {
+                        const docRef = await addDoc(collectionRef, {
+                          url: downloadURL,
+                          createdAt: serverTimestamp()
+                        });
+                        console.log("Document written with ID: ", docRef.id);
+                        setUrl(downloadURL);
+                      } catch (e) {
+                        console.error("Error adding document: ", e);
+                      }                      
                 });
             }
         );
