@@ -22,7 +22,7 @@ function UploadForm() {
     }
 
     return (
-        <div className="row justify-content-center mt-3" style={{minHeight: "85vh"}}>
+        <div className="row justify-content-center mt-3">
           <div className="col col-6">
               <form action="" method="post">
   
