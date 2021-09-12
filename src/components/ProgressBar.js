@@ -2,13 +2,20 @@ import React, {useEffect} from 'react';
 import useStorage from '../hooks/useStorage';
 import { motion } from 'framer-motion';
 
-const ProgressBar = ({ file, setFile }) => {
+const ProgressBar = ({ file, setFile, setStartUpload }) => {
+
+    console.log("prog bar: ", file);
 
     const {url, progress } = useStorage(file);
     
     useEffect(() => {
-        if(url) setFile(null);
-    }, [url, setFile]);
+        if(url)  { 
+            setStartUpload(false); 
+            setFile({ photo: null, title: null }); 
+
+            document.getElementsByTagName("form")[0].reset();
+        }
+    }, [url, setFile, setStartUpload]);
 
     return (
         <div className="progressBar">
