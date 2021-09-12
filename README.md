@@ -1,6 +1,6 @@
 # A simple Photo Gallery app created with <i>React</i> and <i>Google Firebase</i>!
 
-#### Select an image, type a title and press upload button for starting upload your image to Google Firebase Storage! <br/> Next, your uploaded images will be fetch from Firestore database and they will list in image grid.
+#### Select an image, type a title and press upload button for starting upload your image to Google Firebase Storage! <br/> Next, your uploaded images will be fetch from Firestore database and they will list in image grid dynamically.
 
 https://user-images.githubusercontent.com/34348780/133004474-1b13089e-6566-47cc-b464-26a2c47c058b.mp4
 
