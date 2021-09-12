@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Glory:ital,wght@0,100;0,300;0,500;0,700;1,100;1,300;1,500;1,700&family=Open+Sans:ital,wght@0,300;0,400;0,600;0,800;1,300;1,400;1,600;1,800&family=Roboto:ital,wght@0,100;0,300;0,500;0,700;1,100;1,300;1,500;1,700&family=Urbanist:ital,wght@0,100;0,300;0,500;0,700;1,100;1,300;1,500;1,700&display=swap');
+/*
+font-family: 'Glory', sans-serif;
+font-family: 'Open Sans', sans-serif;
+font-family: 'Roboto', sans-serif;
+font-family: 'Urbanist', sans-serif;
+*/
+
+.image-grid > .wrap > .img-wrap > .title-bg > .title-banner {
+    font-family: 'Glory', 'Open Sans', 'Roboto', 'Urbanist', sans-serif;
+}
