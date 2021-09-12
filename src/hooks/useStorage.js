@@ -10,11 +10,14 @@ const useStorage = (file) => {
     const [error, setError] = useState(null);
     const [url, setUrl] = useState(null);
 
+    console.log(file);
+    console.log("2name: ",(file.photo.name));
+    console.log("2type: ",(file.photo.type));
     useEffect(() => {
  
         // Firebase Storage
-        const storageRef = ref(appStorage, "images/"+file.name);
-            const uploadTask = uploadBytesResumable(storageRef, file, file.type);
+        const storageRef = ref(appStorage, "images/" + (file.photo.name));
+            const uploadTask = uploadBytesResumable(storageRef, file.photo, file.photo.type);
         // Firebase Firestore
         const collectionRef = collection(appFirestore, "images");
 
@@ -46,6 +49,7 @@ const useStorage = (file) => {
                     try {
                         const docRef = await addDoc(collectionRef, {
                           url: downloadURL,
+                          title: file.title,
                           createdAt: serverTimestamp()
                         });
                         console.log("Document written with ID: ", docRef.id);
